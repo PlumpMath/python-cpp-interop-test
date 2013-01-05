@@ -1,1 +1,5 @@
-// TODO: export a calculation method
+__declspec(dllexport) int Execute(int)
+{
+	// TODO: do something
+	return 0;
+}

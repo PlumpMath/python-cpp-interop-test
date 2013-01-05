@@ -11,10 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="execution.h" />
+    <ClInclude Include="ExecutionManager.h" />
+    <ClInclude Include="MethodExecutable.h" />
+    <ClInclude Include="ScriptExecutable.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="execution.cpp" />
+    <ClCompile Include="ExecutionManager.cpp" />
+    <ClCompile Include="MethodExecutable.cpp" />
+    <ClCompile Include="ScriptExecutable.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6BA18A9C-F65E-41D4-A895-6546E87EE358}</ProjectGuid>
