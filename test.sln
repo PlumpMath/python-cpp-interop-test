@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app", "app\app.vcxproj", "{9131A5F7-08E0-46FD-ADD7-3835F99526C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6BA18A9C-F65E-41D4-A895-6546E87EE358} = {6BA18A9C-F65E-41D4-A895-6546E87EE358}
+		{B3DA609F-043D-44FE-A8E4-610BE011BC67} = {B3DA609F-043D-44FE-A8E4-610BE011BC67}
+		{A18E67E2-FF4C-461C-A1D0-0A9A6190BC34} = {A18E67E2-FF4C-461C-A1D0-0A9A6190BC34}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{C64379D9-8C3B-4B3E-B141-25C66BEF79C3}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,12 +17,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "methods", "methods", "{DC1CBF5B-FEA6-49A1-86DF-BCB0320A5DF1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C", "C\C.vcxproj", "{B3DA609F-043D-44FE-A8E4-610BE011BC67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6BA18A9C-F65E-41D4-A895-6546E87EE358} = {6BA18A9C-F65E-41D4-A895-6546E87EE358}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{2E7650A8-0738-4F29-97C3-AB76562C056E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "library", "library\library.vcxproj", "{6BA18A9C-F65E-41D4-A895-6546E87EE358}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "library_port", "library_port\library_port.vcxproj", "{A18E67E2-FF4C-461C-A1D0-0A9A6190BC34}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6BA18A9C-F65E-41D4-A895-6546E87EE358} = {6BA18A9C-F65E-41D4-A895-6546E87EE358}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
