@@ -1,5 +1,6 @@
 #pragma once
 #include "ExecutionManager.h"
+#include <string>
 
 class ScriptExecutable :
 	public IExecutable
@@ -9,5 +10,8 @@ public:
 	virtual ~ScriptExecutable(void);
 
 	virtual int Execute(int param);
+
+private:
+	std::string script_name_;
 };
 
