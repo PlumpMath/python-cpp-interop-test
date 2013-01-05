@@ -1,8 +1,19 @@
 #include "ScriptExecutable.h"
 #include <Python.h>
+#include <iostream>
 
-// TODO: embed the Python interpreter
-// TODO: provide a virtual 'library' module
+
+static PyObject* execute(PyObject *self, PyObject *args)
+{
+	std::cout << "execute called!" << std::endl;
+	return Py_None;
+}
+
+static PyMethodDef module_methods[] = {
+	{"execute", ::execute, METH_VARARGS, "Execute another script/calculation method by name."},
+	{NULL, NULL, 0, NULL}
+};
+
 
 ScriptExecutable::ScriptExecutable(const std::wstring& script_name)
 {
@@ -36,8 +47,12 @@ int ScriptExecutable::Execute(int param)
 
 	if(!Py_IsInitialized())
 		Py_Initialize();
+
+	PyObject* module = Py_InitModule("frames", module_methods);
+
 	int ret = PyRun_SimpleString(str.c_str());
 	if(ret == -1)
 		PyErr_Print();
+
 	return ret;
 }
