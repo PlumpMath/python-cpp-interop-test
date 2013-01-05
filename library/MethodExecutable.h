@@ -1,5 +1,6 @@
 #pragma once
 #include "ExecutionManager.h"
+#include <windows.h>
 
 class MethodExecutable :
 	public IExecutable
@@ -9,5 +10,10 @@ public:
 	virtual ~MethodExecutable(void);
 
 	virtual int Execute(int param);
+
+private:
+	typedef int ExecuteFn(int);
+	ExecuteFn* exec_;
+	HMODULE dll_;
 };
 

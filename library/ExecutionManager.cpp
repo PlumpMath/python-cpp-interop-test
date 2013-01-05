@@ -7,8 +7,8 @@
 ExecutionManager::ExecutionManager()
 {
 	// The following can be auto-detected by searching .py's and .dll's. 
-	executables_[L"A"] = new ScriptExecutable(L"A");
-	executables_[L"B"] = new ScriptExecutable(L"B");
+	//executables_[L"A"] = new ScriptExecutable(L"A");
+	//executables_[L"B"] = new ScriptExecutable(L"B");
 	executables_[L"C"] = new MethodExecutable(L"C");
 }
 
@@ -21,5 +21,8 @@ ExecutionManager::~ExecutionManager()
 
 int ExecutionManager::Execute(const std::wstring& name, int param)
 {
-	return 0;
+	auto it = executables_.find(name);
+	if(it == executables_.end())
+		return -1;
+	return it->second->Execute(param);
 }

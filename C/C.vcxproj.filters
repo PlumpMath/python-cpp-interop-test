@@ -3,4 +3,7 @@
   <ItemGroup>
     <ClCompile Include="C.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="C.def" />
+  </ItemGroup>
 </Project>

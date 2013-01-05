@@ -13,5 +13,5 @@ ScriptExecutable::~ScriptExecutable(void)
 
 int ScriptExecutable::Execute(int param)
 {
-	return 0;
+	return -1;
 }

@@ -1,5 +1,5 @@
-__declspec(dllexport) int Execute(int)
+extern "C" __declspec(dllexport) int __cdecl Execute(int)
 {
 	// TODO: do something
-	return 0;
+	return 1;
 }
