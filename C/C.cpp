@@ -1,5 +1,7 @@
+#include <iostream>
+
 extern "C" int __cdecl Execute(int)
 {
-	// TODO: do something
+	std::cout << "Hello, I'm C." << std::endl;
 	return 1;
 }

@@ -1,2 +1,1 @@
-# B.py
-3 + 'abc'
+print "Hello, I'm B."
