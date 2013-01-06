@@ -1,4 +1,4 @@
 print "Hello, I'm A."
 
-import frames
-frames.execute("B", 10)
+import library
+library.execute("B", 10)
