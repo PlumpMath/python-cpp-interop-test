@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExecutionManager.h" />
+    <ClInclude Include="LibraryPort.h" />
     <ClInclude Include="MethodExecutable.h" />
     <ClInclude Include="ScriptExecutable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ExecutionManager.cpp" />
+    <ClCompile Include="LibraryPort.cpp" />
     <ClCompile Include="MethodExecutable.cpp" />
     <ClCompile Include="ScriptExecutable.cpp" />
   </ItemGroup>

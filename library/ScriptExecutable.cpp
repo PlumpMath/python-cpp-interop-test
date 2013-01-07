@@ -1,37 +1,9 @@
 #include "ScriptExecutable.h"
-#include <Python.h>
 #include <iostream>
 
-const char module_name[] = "library";
-const char module_docs[] = "library-Python interop module.";
-static PyObject* execute(PyObject *self, PyObject *args);
-static PyMethodDef module_methods[] = {
-	{"execute", ::execute, METH_VARARGS, "Execute another script/calculation method by name."},
-	{NULL, NULL, 0, NULL}
-};
-const char exec_mgr_name[] = "_exec_mgr";
-
-
-
-static PyObject* execute(PyObject *self, PyObject *args)
-{
-	const char* what_to_exec = NULL;
-	long param = -1;
-	if(!PyArg_ParseTuple(args, "sl", &what_to_exec, &param))
-		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
-	if(!what_to_exec)
-		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
-
-	PyObject* manager_capsule = self;
-	ExecutionManager* manager = (ExecutionManager*)PyCapsule_GetPointer(manager_capsule, exec_mgr_name);
-	if(manager)
-		manager->Execute(std::wstring(what_to_exec, what_to_exec+strlen(what_to_exec)), param);
-
-	Py_RETURN_NONE;
-}
 
 ScriptExecutable::ScriptExecutable(const std::wstring& script_name, ExecutionManager* manager) :
-	manager_(manager)
+	port_(manager)
 {
 	script_name_.resize(script_name.size()+1); // +1 for a null terminator
 	size_t num_conv = 0;
@@ -50,6 +22,7 @@ int ScriptExecutable::Execute(int param)
 	if(script_name_.empty())
 		return -1;
 
+	// load the script
 	FILE* file = fopen((script_name_+".py").c_str(), "rt");
 	if(!file)
 		return -1;
@@ -61,19 +34,6 @@ int ScriptExecutable::Execute(int param)
 	fread(&str[0], 1, file_size, file);
 	fclose(file);
 
-	if(!Py_IsInitialized())
-		Py_Initialize();
-
-	PyObject* manager_capsule = PyCapsule_New(manager_, exec_mgr_name, NULL);
-	PyObject* module = Py_InitModule4(module_name, module_methods, module_docs, manager_capsule, PYTHON_API_VERSION);
-
-	int ret = PyRun_SimpleString(str.c_str());
-	if(ret == -1)
-		PyErr_Print();
-
-	// TODO: learn how and use this
-	//Py_XDECREF(manager_capsule);
-	//Py_XDECREF(module);
-
-	return ret;
+	// run the script
+	return port_.RunScript(str, param);
 }

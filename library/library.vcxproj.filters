@@ -4,10 +4,12 @@
     <ClCompile Include="ExecutionManager.cpp" />
     <ClCompile Include="ScriptExecutable.cpp" />
     <ClCompile Include="MethodExecutable.cpp" />
+    <ClCompile Include="LibraryPort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExecutionManager.h" />
     <ClInclude Include="ScriptExecutable.h" />
     <ClInclude Include="MethodExecutable.h" />
+    <ClInclude Include="LibraryPort.h" />
   </ItemGroup>
 </Project>

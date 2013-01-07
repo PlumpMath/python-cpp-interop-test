@@ -1,6 +1,7 @@
 #pragma once
 #include "ExecutionManager.h"
 #include <string>
+#include "LibraryPort.h"
 
 class ScriptExecutable :
 	public IExecutable
@@ -13,6 +14,6 @@ public:
 
 private:
 	std::string script_name_;
-	ExecutionManager* manager_;
+	LibraryModule port_;
 };
 
