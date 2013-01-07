@@ -16,7 +16,7 @@ The framework works like this:
 # A.py
 import library
 for i in xrange(5):
-  library.execute("B", 10)
+  print "B(%d) = %d" % (i, library.execute("B", i))
 ```
 
 ### Sample DLL:
