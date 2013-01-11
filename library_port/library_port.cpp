@@ -4,7 +4,7 @@
 
 std::auto_ptr<LibraryPort> port_;
 
-PyMODINIT_FUNC initlibrary()
+PyMODINIT_FUNC init_internal()
 {
 	port_.reset(new LibraryPort());
 }

@@ -7,8 +7,7 @@
 ExecutionManager::ExecutionManager()
 {
 	// The following can be auto-detected by searching .py's and .dll's. 
-	executables_[L"A"] = new ScriptExecutable(L"A", this);
-	executables_[L"B"] = new ScriptExecutable(L"B", this);
+	executables_[L"D.bar"] = new ScriptExecutable(L"B", L"bar", this);
 	executables_[L"C"] = new MethodExecutable(L"C");
 }
 

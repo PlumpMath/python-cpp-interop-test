@@ -104,7 +104,7 @@
       <AdditionalDependencies>library.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy "$(TargetPath)" "$(TargetDir)\library.pyd"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">copy "$(TargetPath)" "$(TargetDir)\_internal.pyd"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

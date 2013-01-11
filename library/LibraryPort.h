@@ -12,7 +12,7 @@ public:
 	LibraryModule(ExecutionManager* manager);
 	~LibraryModule(void);
 
-	int RunScript(const std::string& script_string, int param);
+	int RunScript(const std::string& module, const std::string& func, int param);
 
 private:
 	PyObject* module_;

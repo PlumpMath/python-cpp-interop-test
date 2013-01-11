@@ -4,8 +4,8 @@
 #include <iostream>
 
 
-const char module_name[] = "library";
-const char module_docs[] = "library-Python interop module.";
+const char module_name[] = "_internal";
+const char module_docs[] = "library-Python internal interop module";
 static PyObject* execute(PyObject *self, PyObject *args);
 static PyMethodDef module_methods[] = {
 	{"execute", ::execute, METH_VARARGS, "Execute another script/calculation method by name."},
@@ -19,7 +19,7 @@ static PyObject* execute(PyObject *self, PyObject *args)
 {
 	const char* what_to_exec = NULL;
 	long param = -1;
-	if(!PyArg_ParseTuple(args, "sl", &what_to_exec, &param))
+	if(!PyArg_ParseTuple(args, "s", &what_to_exec))
 		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
 	if(!what_to_exec)
 		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
@@ -50,8 +50,11 @@ LibraryModule::~LibraryModule(void)
 	//Py_XDECREF(module);
 }
 
-int LibraryModule::RunScript( const std::string& script_string, int param )
+int LibraryModule::RunScript(const std::string& module, const std::string& func, int param)
 {
+	PyObject* fromlist = Py_BuildValue();
+	PyObject* module_obj = PyImport_ImportModuleEx(module.c_str(), NULL, NULL, );
+
 	int ret = PyRun_SimpleString(script_string.c_str());
 	if(ret == -1)
 		PyErr_Print();
