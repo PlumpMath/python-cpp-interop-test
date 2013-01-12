@@ -19,15 +19,24 @@ static PyObject* execute(PyObject *self, PyObject *args)
 {
 	const char* what_to_exec = NULL;
 	long param = -1;
-	if(!PyArg_ParseTuple(args, "s", &what_to_exec))
+	PyObject* exec_args = NULL;
+	if(!PyArg_ParseTuple(args, "sO", &what_to_exec, &exec_args))
 		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
 	if(!what_to_exec)
 		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
+
+	// convert into the C++ type
+	if(!PyDict_Check(exec_args))
+		return (Py_INCREF(PyExc_TypeError), PyExc_TypeError);
+
 
 	PyObject* manager_capsule = self;
 	ExecutionManager* manager = (ExecutionManager*)PyCapsule_GetPointer(manager_capsule, exec_mgr_name);
 	if(manager)
 		manager->Execute(std::wstring(what_to_exec, what_to_exec+strlen(what_to_exec)), param);
+
+	Py_XDECREF(what_to_exec);
+	Py_XDECREF(exec_args);
 
 	Py_RETURN_NONE;
 }
@@ -52,11 +61,28 @@ LibraryModule::~LibraryModule(void)
 
 int LibraryModule::RunScript(const std::string& module, const std::string& func, int param)
 {
-	PyObject* fromlist = Py_BuildValue();
-	PyObject* module_obj = PyImport_ImportModuleEx(module.c_str(), NULL, NULL, );
+	PyObject* func_name = PyString_FromString(func.c_str());
+	PyObject* fromlist = Py_BuildValue("(s)", func_name);
+	PyObject* module_obj = PyImport_ImportModuleEx((char*)module.c_str(), NULL, NULL, fromlist);
 
-	int ret = PyRun_SimpleString(script_string.c_str());
-	if(ret == -1)
+	if(!module_obj)
+	{
+		std::cout << "Couldn't import " << module << "." << func << std::endl;
+		return -1;
+	}
+
+	PyObject* result = PyObject_CallMethod(module_obj, (char*)func.c_str(), "()");
+
+	if(!result)
+	{
 		PyErr_Print();
-	return ret;
+		return -1;
+	}
+
+	Py_XDECREF(result);
+	Py_XDECREF(module_obj);
+	Py_XDECREF(fromlist);
+	Py_XDECREF(func_name);
+
+	return 0;
 }

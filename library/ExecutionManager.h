@@ -1,6 +1,9 @@
 #pragma once
 #include <map>
 #include <string>
+#include <afxwin.h>
+
+typedef std::map<std::wstring, VARIANT> ExecutableArgs;
 
 class IExecutable
 {
