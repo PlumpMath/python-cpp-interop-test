@@ -1,7 +1,5 @@
 #include "MethodExecutable.h"
 
-// TODO: load the dll, get proc address and execute
-
 MethodExecutable::MethodExecutable(const std::wstring& dll_name)
 {
 	dll_ = LoadLibraryW(dll_name.c_str());
@@ -14,9 +12,9 @@ MethodExecutable::~MethodExecutable(void)
 		FreeLibrary(dll_);
 }
 
-int MethodExecutable::Execute(int param)
+bool MethodExecutable::Execute(const Metadata& args, Metadata& ret)
 {
 	if(dll_ && exec_)
-		return (*exec_)(param);
-	return -1;
+		return (*exec_)(args, ret);
+	return false;
 }

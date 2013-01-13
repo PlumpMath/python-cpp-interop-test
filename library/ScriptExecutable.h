@@ -14,7 +14,7 @@ public:
 		);
 	virtual ~ScriptExecutable(void);
 
-	virtual int Execute(int param);
+	virtual bool Execute(const Metadata& args, Metadata& ret);
 
 private:
 	std::string script_name_, func_name_;

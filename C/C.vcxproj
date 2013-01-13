@@ -100,7 +100,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>C.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>$(SolutionDir)build\</AdditionalLibraryDirectories>
-	  <AdditionalDependencies>library.lib</AdditionalDependencies>
+      <AdditionalDependencies>library.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

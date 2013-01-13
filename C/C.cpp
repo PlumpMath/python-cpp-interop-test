@@ -1,7 +1,9 @@
 #include <iostream>
+#include "Metadata.h"
 
-extern "C" int __cdecl Execute(int)
+extern "C" bool __cdecl Execute(const Metadata& args, Metadata& ret)
 {
-	std::cout << "Hello, I'm C." << std::endl;
-	return 1;
+	std::cout << "C: I'm a null-device" << std::endl;
+	ret = args;
+	return true;
 }

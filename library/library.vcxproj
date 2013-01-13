@@ -19,13 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Metadata.h" />
     <ClInclude Include="ExecutionManager.h" />
+    <ClInclude Include="json\json.h" />
     <ClInclude Include="LibraryPort.h" />
     <ClInclude Include="MethodExecutable.h" />
     <ClInclude Include="ScriptExecutable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Metadata.cpp" />
     <ClCompile Include="ExecutionManager.cpp" />
+    <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="LibraryPort.cpp" />
     <ClCompile Include="MethodExecutable.cpp" />
     <ClCompile Include="ScriptExecutable.cpp" />
@@ -103,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Python27\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Python27\include\;$(SolutionDir)library</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

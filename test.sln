@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{C643
 	ProjectSection(SolutionItems) = preProject
 		build\A.py = build\A.py
 		build\B.py = build\B.py
+		build\D.py = build\D.py
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "methods", "methods", "{DC1CBF5B-FEA6-49A1-86DF-BCB0320A5DF1}"
@@ -22,6 +23,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C", "C\C.vcxproj", "{B3DA60
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "library", "library", "{2E7650A8-0738-4F29-97C3-AB76562C056E}"
+	ProjectSection(SolutionItems) = preProject
+		build\library.py = build\library.py
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "library", "library\library.vcxproj", "{6BA18A9C-F65E-41D4-A895-6546E87EE358}"
 EndProject

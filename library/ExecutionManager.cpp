@@ -20,13 +20,13 @@ ExecutionManager::~ExecutionManager()
 	executables_.clear(); // extra-careful?
 }
 
-int ExecutionManager::Execute(const std::wstring& name, int param)
+bool ExecutionManager::Execute(const std::wstring& name, const Metadata& args, Metadata& ret)
 {
 	auto it = executables_.find(name);
 	if(it == executables_.end())
 	{
 		std::wcout << L"No " << name << L" in hte registry." << std::endl;
-		return -1;
+		return false;
 	}
-	return it->second->Execute(param);
+	return it->second->Execute(args, ret);
 }

@@ -9,10 +9,10 @@ public:
 	MethodExecutable(const std::wstring& dll_name);
 	virtual ~MethodExecutable(void);
 
-	virtual int Execute(int param);
+	virtual bool Execute(const Metadata& args, Metadata& ret);
 
 private:
-	typedef int ExecuteFn(int);
+	typedef bool ExecuteFn(const Metadata& args, Metadata& ret);
 	ExecuteFn* exec_;
 	HMODULE dll_;
 };
